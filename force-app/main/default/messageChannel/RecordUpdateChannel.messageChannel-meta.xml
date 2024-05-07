@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>RecordUpdateChannel</masterLabel>
+    <isExposed>true</isExposed>
+    <description>Channel used for sending updated list of records and other data updates.</description>
+    <lightningMessageFields>
+        <fieldName>records</fieldName>
+        <description>This field contains the list of updated records.</description>
+    </lightningMessageFields>
+</LightningMessageChannel>

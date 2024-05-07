@@ -1,0 +1,49 @@
+<template>
+    <lightning-card title="BoM and Disti Records" icon-name="custom:custom63">
+        <div class="slds-var-p-horizontal_medium slds-var-p-top_small">
+            <lightning-combobox name="typeFilter" label="Filter by Type"
+                                value={filter}
+                                options={typeOptions}
+                                onchange={handleFilterChange}
+                                class="slds-var-m-bottom_medium">
+            </lightning-combobox>
+        </div>
+
+        <template if:true={isBoM}>
+            <h3 class="slds-section-title--divider">BoM Records</h3>
+            <lightning-datatable data={bomRecords}
+                                 columns={columns}
+                                 key-field="id"
+                                 hide-checkbox-column="true">
+            </lightning-datatable>
+        </template>
+
+        <template if:true={isDisti}>
+            <h3 class="slds-section-title--divider">Disti Records</h3>
+            <lightning-datatable data={distiRecords}
+                                 columns={columns}
+                                 key-field="id"
+                                 hide-checkbox-column="true">
+            </lightning-datatable>
+        </template>
+
+        <template if:true={isAll}>
+            <template if:true={bomRecords.length}>
+                <h3 class="slds-section-title--divider">BoM Records</h3>
+                <lightning-datatable data={bomRecords}
+                                     columns={columns}
+                                     key-field="id"
+                                     hide-checkbox-column="true">
+                </lightning-datatable>
+            </template>
+            <template if:true={distiRecords.length}>
+                <h3 class="slds-section-title--divider">Disti Records</h3>
+                <lightning-datatable data={distiRecords}
+                                     columns={columns}
+                                     key-field="id"
+                                     hide-checkbox-column="true">
+                </lightning-datatable>
+            </template>
+        </template>
+    </lightning-card>
+</template>

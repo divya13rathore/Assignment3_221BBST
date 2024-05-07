@@ -1,0 +1,60 @@
+<template>
+    <lightning-card title="Create BoM/Disti Record" icon-name="custom:custom63">
+        <div class="slds-var-m-around_medium">
+            <div class="slds-grid slds-wrap">
+                <!-- Record Type Selection -->
+                <div class="slds-col slds-size_1-of-1">
+                    <lightning-combobox label="Type"
+                                        value={recordType}
+                                        options={typeOptions}
+                                        onchange={handleTypeChange}
+                                        placeholder="Select Record Type"></lightning-combobox>
+                </div>
+
+                <!-- Conditional Part Number Input for BoM -->
+               <template if:true={isBoM}>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <lightning-input label="BoM Part Number"
+                                         value={partNumber}
+                                         onchange={handlePartNumberChange}
+                                         placeholder="Enter BoM Part Number"></lightning-input>
+                    </div>
+
+                    <!-- Quantity Input for BoM -->
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <lightning-input type="number" label="BoM Quantity"
+                                         value={quantity}
+                                         onchange={handleQuantityChange}
+                                         placeholder="Enter BoM Quantity"
+                                         min="1"></lightning-input>
+                    </div>
+                </template>
+                <!-- Conditional Part Number Input for Disti -->
+                <template if:true={isDisti}>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <lightning-input label="Disti Part Number"
+                                         value={distiPartNumber}
+                                         onchange={handleDistiPartNumberChange}
+                                         placeholder="Enter Disti Part Number"></lightning-input>
+                    </div>
+
+                    <!-- Quantity Input for Disti -->
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <lightning-input type="number" label="Disti Quantity"
+                                         value={distiQuantity}
+                                         onchange={handleDistiQuantityChange}
+                                         placeholder="Enter Disti Quantity"
+                                         min="1"></lightning-input>
+                    </div>
+</template>
+                <!-- Action Buttons -->
+                <div class="slds-col slds-size_1-of-1 slds-var-p-top_medium">
+                    <lightning-button variant="brand" label="Save"
+                                      title="Save Record"
+                                      onclick={saveRecord}
+                                      class="slds-var-m-right_x-small"></lightning-button>
+                </div>
+            </div>
+        </div>
+    </lightning-card>
+</template>
